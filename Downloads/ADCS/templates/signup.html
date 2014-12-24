@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="content main-wrapper">
+  <div class="layout">
+    <h1>Register</h1>
+    <form action="{{ url_for('signup') }}" method=post class="signup-form">
+      {{ form.hidden_tag() }}
+      <div class="input-wrapper">
+        {{ form.firstname.label }}
+        {{ form.firstname }}
+        {% for message in form.firstname.errors %}
+          <div class="flash">{{ message }}</div>
+        {% endfor %}
+      </div>
+      <div class="input-wrapper">
+      {{ form.lastname.label }}
+      {{ form.lastname }}
+      {% for message in form.lastname.errors %}
+        <div class="flash">{{ message }}</div>
+      {% endfor %}
+      </div>
+      <div class="input-wrapper">
+      {{ form.email.label }}
+      {{ form.email }}
+      {% for message in form.email.errors %}
+       <div class="flash">{{ message }}</div>
+      {% endfor %}
+      </div>
+      <div class="input-wrapper">
+      {{ form.code.label }}
+      {{ form.code }}
+      {% for message in form.code.errors %}
+        <div class="flash">{{ message }}</div>
+      {% endfor %}
+      </div>
+      <div class="input-wrapper">
+      {{ form.password.label }}
+      {{ form.password }}
+      {% for message in form.password.errors %}
+        <div class="flash">{{ message }}</div>
+      {% endfor %}
+      </div>
+      {{ form.submit }}
+    </form>
+  </div>
+</div>
+{% endblock %}

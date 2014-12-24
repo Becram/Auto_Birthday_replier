@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block content %}
+   <div class="content">
+     <div class="layout">
+    <div class="view_detail">
+      <div class="time-info"><label for="">Recorded time:</label> {{time}}</div>
+      <div class="time-info"><label for="">Phone Number:</label> {{phone_number}}</div>      
+    </div>
+
+      <table id ="t01">
+      <tr>
+        <th>S.N</th>
+        <th>Question</th>
+        <th>Answer</th>
+        <th></th>
+      </tr>
+      {% for  answer in answers %}
+      <tr>
+        <td>{{loop.index}}</td>
+        <td>
+                  <audio controls = "contorls" src ="/static/audio/{{project.user_call_code}}/question/{{answer.questions.question}}"></audio>
+        </td>
+        <td>
+                  {% if answer.questions.question_type == 1 %}
+                  <audio controls = "contorls" src ="/static/audio/{{project.user_call_code}}/answer/{{answer.answer}}"></audio>
+        </td>
+        {% else %}
+        
+        <td>{{answer.answer}}</td>
+      </tr>
+      {% endif %}
+      {% endfor %}
+
+
+    </table>
+</div>
+</div>
+  
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+<div class="content">
+  <div class="layout add-project-wrap">
+    <h1>Add Project</h1>
+    <form action="{{ url_for('add_project') }}" method=post enctype="multipart/form-data">
+      {{ form.hidden_tag() }}
+      <div class="input-wrapper">
+        {{ form.project_title.label }}
+        {{ form.project_title }}
+        {% for message in form.project_title.errors %}
+          <div class="flash">{{ message }}</div>
+        {% endfor %}
+      </div>
+      <div class="input-wrapper start_info_file">
+        {{form.start_info_file.label}}
+        {{form.start_info_file}}
+        {% for message in form.user_call_code.errors %}
+          <div class="flash">{{ message }}</div>
+        {% endfor %}
+      </div>
+      <div class="input-wrapper concluding_info_file">
+        {{form.concluding_info_file.label}}
+        {{form.concluding_info_file}}
+        {% for message in form.start_info.errors %}
+          <div class="flash">{{ message }}</div>
+        {% endfor %}
+      </div>
+      <div class="input-wrapper">
+        {{ form.user_call_code.label }}
+        {{ form.user_call_code }}
+        {% for message in form.concluding_info.erros %}
+          <div class="flash">{{message}}</div>
+        {% endfor %} 
+      </div>   
+
+      {{ form.submit }}
+
+    </form>
+    <style type="text/css">
+      .hidden{
+        display: none;
+      }
+    </style>
+
+    {% endblock %}

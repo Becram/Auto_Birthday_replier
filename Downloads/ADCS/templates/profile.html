@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="content">
+  <div class="layout">
+    <div class="jumbo">
+      <h1>Audio Data Collection System </h1>
+      <p>Welcome to our system.Audio Data System is the fully dynamic IVR system powered by Asterisk. Where you can
+        make your own sets of IVR by telephone as well as web interface,select your own project short code number,view response,add more and more project.
+      </p>
+    </div>
+
+    <div class="add-project">
+      <a href="{{ url_for('add_project') }}">Add Project</a>
+    </div>
+  </div>
+</div>
+<div class="project-list">
+  <div class="jumbo layout">
+    <h1>Project Lists</h1>
+    <table class="table-wrap">
+      <tr>
+        <th>S.N</th>   
+        <th>Name</th>
+        <th>User Call Code</th> 
+        <th>Response</th>
+      </tr>
+      <!--   {% set i=1 %} -->
+      {% for project_item in project %}
+      <tr>
+        <td>{{ loop.index }}</td> 
+        <td><a href="{{url_for('project_page',id=project_item.id) }}">{{project_item.project_title}}</a></td>
+        <td>{{project_item.user_call_code}}</td> 
+        <td>{{project_item.total_response}}</td>
+      </tr>
+      <!-- {% set i=i+1 %} -->
+      {% endfor %}
+
+    </table>
+  </div>
+  </div>
+
+  {% endblock %}

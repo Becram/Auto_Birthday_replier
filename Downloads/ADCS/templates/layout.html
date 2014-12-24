@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ADCS APP</title>
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <script type="text/javascript" src="{{url_for('static',filename='js/jquery-1.11.1.min.js')}}"></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="header-wrapper">
+        <header class="layout header">
+          <nav>
+            <ul class="menu">
+              <li class="home"><a href="{{ url_for('home') }}">Home</a></li>
+              <li class="about"><a href="{{ url_for('about') }}">About</a></li>
+              {% if 'name' in session %}
+              <li class="project"><a href="{{ url_for('profile') }}">Project</a></li>
+              <!--            <li class="signout"><a href="{{ url_for('signout') }}">Sign Out</a></li>-->
+              {% endif %}
+    
+              <li class="contact"><a href="{{ url_for('contact') }}">Contact</a></li>
+
+            </ul>
+          </nav>
+          <div class="right-header-section">
+            {% if 'name' in session %} 
+            <div class="welcome-section">Welcome, {{session['name']}}</div>           
+            <div class="signout"><a href="{{ url_for('signout') }}">Sign Out</a></div>
+            {% else %}
+            <ul class="menu">
+            <li class="signup"><a href="{{ url_for('signup') }}">Sign Up</a></li>
+            <li class="signin"><a href="{{ url_for('signin') }}">Sign In</a></li>
+            </ul>
+            {% endif %}
+          </div>
+        </header>
+      </div>
+      <div class="main-container">
+        {% block content %}
+        {% endblock %}
+      </div>
+    </div>
+
+
+<script type="text/javascript" src ="{{url_for('static' ,filename='js/script.js')}}"></script>
+  </body>
+</html>

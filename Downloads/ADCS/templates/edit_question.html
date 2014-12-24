@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="content edit-question">
+  <div class="layout">
+    <h1>Edit question</h1>
+    <form action="{{ url_for('edit_question',id=edit_question.id) }}" method=post enctype="multipart/form-data">
+      {{ form.hidden_tag() }}
+      <div class="input-wrapper">
+        {{ form.question.label }}
+        {{ form.question }}
+        <span>{{ form.question.data }}</span>
+        {% for message in form.question.errors %}
+          <div class="flash">{{ message }}</div>
+        {% endfor %}
+
+      </div>
+      <div class="input-wrapper question-type">
+        {{ form.question_type.label }}
+        {{ form.question_type }}
+        {% for message in form.question_type.errors %}
+          <div class="flash">{{ message }}</div>
+        {% endfor %}
+      </div>
+      {{ form.submit }}
+    </form>
+  </div>
+</div>
+{% endblock %}
+

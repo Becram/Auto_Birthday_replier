@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="content main-wrapper">
+        <div class="layout">
+                <h1>Organization Name:{{session['name'] }}</h1>
+
+                <table>
+                        <tr>
+                                <th>S.N</th>
+                                <th>Recorded time</th>
+                                <th>Phone Number</th>
+                                <th>Action</th>
+                        </tr>
+                        {% for answer in answers %}
+                        <tr>
+                                <td>{{loop.index}}</td>
+                                <td>{{answer.time}}</td>
+                                <td>{{answer.phone_number}}
+                                <td><a href="{{url_for('view_detail',id=answer.project_id,phone_number=answer.phone_number,time=answer.time) }}">View Details</a></td>
+                                {# change audio play link to src ="/static/audio/{{answer.project.user_call_code}}/answer/{{answer.answer}}
+                                #} 
+                        </tr>
+                        {% endfor %}
+                </table>
+
+        </div>
+</div>
+{% endblock %}

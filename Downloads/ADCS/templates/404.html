@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="main-wrapper">
+  <div class="error-wrapper layout">
+    <div class="left-error-wrapper">
+      <img src="../static/img/404-character.png" alt="">
+    </div>
+    <div class="right-error-wrapper">
+      <h1>404</h1>
+      <h2>Page not found</h2>
+      <p>Sorry, the page you are looking for doesn’t exist.</p>
+      <a href="{{ url_for('profile') }}" class="back-project">Back to Projects</a>
+    </div>
+  </div>
+</div>
+{% endblock %} 
